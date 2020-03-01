@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block auto_answer %}
+{% for i in ans_slv %}
+    <h4>{{i}}:{{ans_slv[i]}}</h4>
+{% endfor %}
+{% endblock %}
