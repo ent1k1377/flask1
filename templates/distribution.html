@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block distribution %}
+<div class="distribution-main">
+    <h1 align="center">Размещение по каютам</h1>
+    {% set nom = "Каюта №" %}
+    {% for i in list_cabin %}
+        {% if loop.index == 1%}
+            <p>{{i}} - {{nom}} {{loop.index}} - капитан корабля<br></p>
+        {% else %}
+            <p>{{i}} - {{nom}} {{loop.index}}<br></p>
+        {% endif %}
+
+    {% endfor %}
+</div>
+{% endblock %}

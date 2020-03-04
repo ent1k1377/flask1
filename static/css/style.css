@@ -10,3 +10,11 @@ div.auto_answer{
 	width: 	90%;
 	margin: 0 auto;
 }
+.distribution-main{
+	width: 80%;
+	margin: 0 auto;
+}
+.distribution-main p{
+	font-size: 20px;
+	font-weight: normal;
+}
