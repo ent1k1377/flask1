@@ -1,15 +1,53 @@
 {% extends "base.html" %}
+
 {% block login_form %}
+<div class="main_login">
 <div>
-    {{ form.csrf_token }}
+<img src="/static/img/MARS.png" alt="" style="float: left;">
+<h1>Аварийный доступ</h1>
 </div>
-{% for field in form if field.name != 'csrf_token' %}
-<div>
-    {{ field.label() }}
-    {{ field() }}
-    {% for error in field.errors %}
-    <div class="error">{{ error }}</div>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag()}}
+    <p>
+        {{ form.id_astr.label }}<br>
+        {{ form.id_astr(class="form-control") }}<br>
+        {% for error in form.id_astr.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
     {% endfor %}
+    </p>
+    <p>
+        {{ form.password_astr.label }}<br>
+        {{ form.password_astr(class="form-control", type="password") }}<br>
+        {% for error in form.password_astr.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+
+
+    <p>
+        {{ form.id_cap.label }}<br>
+        {{ form.id_cap(class="form-control") }}<br>
+        {% for error in form.id_cap.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+    <p>
+        {{ form.password_cap.label }}<br>
+        {{ form.password_cap(class="form-control", type="password") }}<br>
+        {% for error in form.password_cap.errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    </p>
+
+    <p>{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+</form>
 </div>
-{% endfor %}
 {% endblock %}
