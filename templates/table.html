@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block table %}
+    <h1 align="center">Оформление каюты</h1>
+    <div class="container">
+  <div class="row">
+    <div class="col-6" style="background: grey;">
+      <p>Цвет стен</p>
+    </div>
+    <div class="col-6" style="background: grey;">
+      <p>Эмблема</p>
+    </div>
+      <div class="w-100"></div>
+      <div class="col-6" style="background: {{color}};"></div>
+      <div class="col-6"><img src="/static/img/{{age}}" alt=""></div>
+  </div>
+    </div>
+{% endblock %}

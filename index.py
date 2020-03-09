@@ -62,5 +62,23 @@ def distribution():
     return render_template('distribution.html', list_cabin=list_cabin)
 
 
+@app.route('/table/<sex>/<int:age>')
+def table(sex, age):
+    color = 'red'
+    if age >= 21:
+        age = 'ino1.png'
+        if sex == 'male':
+            color = '#007FF0'
+        elif sex == 'female':
+            color = '#FF4500'
+    else:
+        age = 'ino2.png'
+        if sex == 'male':
+            color = '#B0C4DE'
+        elif sex == 'female':
+            color = '#FFA07A'
+    return render_template('table.html', color=color, age=age)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
