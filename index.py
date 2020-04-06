@@ -80,5 +80,23 @@ def table(sex, age):
     return render_template('table.html', color=color, age=age)
 
 
+@app.route('/carousel')
+def carousel():
+    return render_template('carousel1.html')
+
+
+@app.route('/member')
+def member():
+    import json, random
+    with open('templates/f.json') as f:
+        templates = json.load(f)
+    n = str(random.randint(0, len(templates) - 1))
+    name = templates[n]['name']
+    surname = templates[n]['surname']
+    path = templates[n]['path']
+    jobs = ', '.join(sorted(templates[n]['jobs']))
+    return render_template('member.html', name=name, surname=surname, path=path, jobs=jobs)
+
+
 if __name__ == '__main__':
     app.run(port=8080, host='127.0.0.1')
