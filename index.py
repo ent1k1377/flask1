@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 
 app = Flask(__name__)
 
@@ -96,6 +96,25 @@ def member():
     path = templates[n]['path']
     jobs = ', '.join(sorted(templates[n]['jobs']))
     return render_template('member.html', name=name, surname=surname, path=path, jobs=jobs)
+
+
+mars = ['2', '3']
+
+
+@app.route('/galery', methods=['POST', 'GET'])
+def galery():
+    global mars
+    if request.method == 'GET':
+        print(mars)
+        return render_template('galery.html', mars=mars)
+    elif request.method == 'POST':
+        f = request.files['file'].read()
+        mars.append(str(len(mars) + 2))
+        a = open(f'static/img/mars{len(mars) + 1}.jpg', 'wb')
+        a.write(f)
+        a.close()
+
+        return "Форма отправлена"
 
 
 if __name__ == '__main__':
